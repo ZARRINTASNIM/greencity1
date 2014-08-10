@@ -1,3 +1,9 @@
+<?php
+include ('C:\wamp\www\SEGreenCity\Controller\connectionController.php');
+include('C:\wamp\www\SEGreenCity\Model\getArticleInfo.php');
+include('C:\wamp\www\SEGreenCity\Model\getRecentPostInfo.php');
+?>
+
 
 <head>
 
@@ -53,28 +59,39 @@
 <div class="content">
 		
          
-   
+     <?php 
+	if($num > 0){
+	while($row_articles = mysql_fetch_assoc($blogarticles)){
+	?>
 		<!-- Begin Image Format -->
 		<div class="post format-image box"> 
 			<div class="frame">
 				<a href="#">
-					<img src="../Resource/images/" alt="" />
+					<img src="../Resource/images/<?= $row_articles['img'];?>" alt="" />
 				</a>
 			</div>
            
-			<h1 class="title"><a href="#"></a></h1>
-			<p> 
+			<h1 class="title"><a href="#"><?= $row_articles['title']; ?></a></h1>
+			<p> <?= $row_articles['comments']; ?>
 		
 			</p>
 			
 			<div class="details">
-				<span class="icon-image"><a href="#"></a></span>
-				<span class="comments"><a href="#"></a></span>
+				<span class="icon-image"><a href="#"><?= $row_articles['date_posted']; ?></a></span>
+				<span class="comments"><a href="#"><?= $row_articles['artchild'];?></a></span>
 			</div>
 			
 		</div>
-      
+      <?php
+		}
+		}else{ ?>
         
+        <td><p>There are no articles available at present</p></td></tr>
+		
+        <?php	
+		}
+	  ?> 
+
 </div>
 <!-- End Container -->
 
@@ -85,16 +102,23 @@
   <div class="sidebox widget">
 			<h3 class="widget-title">Recent Posts</h3>
             
-
+<?php           
+if($num_blog > 0)
+{
+while($row_blog = mysql_fetch_assoc($blog)){ ?>
             
             
 			<ul>
-              <li><a href="#"> posted in  pollution category on </a></li>
+              <li><a href="#"><?= $row_blog['title']; ?> posted in <?= $row_blog['category'] ?> pollution category on <?= $row_blog['date_posted'] ?> </a></li>
 			</ul>
 			
+            <?php 
+		}
+		}else{ ?>
         <tr>
 		<td><p>No topics to list</p></td>
 		</tr>
+		<?php } ?>
         
      </div> 
 	
