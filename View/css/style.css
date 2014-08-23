@@ -145,6 +145,9 @@ a {
     -o-transition: all 200ms ease-in;
     -moz-transition: all 200ms ease-in;
 }
+a:hover {
+    color: #86aca3;
+}
 
 a.more {
     margin-bottom: 20px;
@@ -152,6 +155,29 @@ a.more {
     line-height: 1;
 }
 
+a.button,
+.forms fieldset .btn-submit,
+#commentform input#submit {
+    font-family: 'Open Sans Condensed', sans-serif;
+    background: #f2f2f2 url(../Resouece/images/button.png) repeat-x;
+    height: 31px;
+    line-height: 31px;
+    color: #383838;
+    font-size: 14px;
+    padding: 0px 18px;
+    margin: 0 8px 0 0;
+    display: inline-block;
+    -webkit-transition: all 200ms ease-in;
+    -o-transition: all 200ms ease-in;
+    -moz-transition: all 200ms ease-in;
+    cursor: pointer;
+    margin-bottom: 20px;
+    box-shadow: 0px 1px 2px -1px rgba(0, 0, 0, 0.5);
+    -webkit-box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.2);
+    width: auto;
+    border: none;
+    font-weight: bold;
+}
 
 h1,
 h2,
@@ -649,16 +675,44 @@ iframe {
     padding: 0 20px;
     font-size: 11px;
 }
+
+.single .post .bar {
+    margin-bottom: 20px;
+    margin-top: -20px;
+}
+
+.post .bar {
+    background: rgba(0, 0, 0, 0.12);
+    margin: 0 -20px;
+    overflow: hidden;
+    position: relative;
+    padding: 0 20px;
+    font-size: 11px;
+}
 .post .details span {
     margin: 6px 0 0 0
 }
+
+.post .bar span {
+    margin: 6px 0 0 0
+}
+
 .post .details,
 .post .details a {
     color: #797979
 }
+.post .bar,
+.post .bar a {
+    color: #797979
+}
+
 .post .details a:hover {
     color: #86aca3
 }
+.post .bar a:hover {
+    color: #86aca3
+}
+
 .post .details .likes a {
     background: transparent url(style/images/icon-like.png) no-repeat left 13px;
     float: right;
@@ -674,6 +728,14 @@ iframe {
     color: #797979
 }
 .post .details .comments {
+    background: transparent url('../Resource/images/icon-comment.png') no-repeat left 7px;
+    float: right;
+    position: relative;
+    padding: 0 0 6px 14px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+.post .bar .comments {
     background: transparent url('../Resource/images/icon-comment.png') no-repeat left 7px;
     float: right;
     position: relative;
@@ -703,7 +765,7 @@ iframe {
 
 
 .post-nav {
-    background: transparent url(style/images/line.png) center top repeat-x;
+    background: transparent url(../Resource/images/line.png) center top repeat-x;
     margin: 0 -5px;
     overflow: hidden;
     position: relative;
@@ -745,7 +807,7 @@ iframe {
     padding-bottom: 0;
     margin-top: 10px;
     padding-top: 30px;
-    background: transparent url(style/images/line.png) top left repeat-x;
+    background: transparent url(../Resource/images/line.png) top left repeat-x;
 }
 .sidebox.widget_text,
 .sidebox.widget_text:first-child {
@@ -907,65 +969,99 @@ ul.single-gallery li .frame {
     display: block;
 }
 
-/*-----------------------------------------------------------------------------------*/
-/*	SOCIAL
-/*-----------------------------------------------------------------------------------*/
-.social {
-    margin-bottom: 40px;
-    text-align: center;
+
+/* =Comments
+----------------------------------------------- */
+#comments ol.commentlist {
+    list-style: none;
+    background: transparent url(../Resource/images/line.png) repeat-x left bottom;
+    margin-bottom: 30px;
+    padding-bottom: 30px;
+    margin-top: -15px;
 }
-#footer .social {
-    margin: 0;
-    text-align: left;
+#comments ol.commentlist li {
+    padding: 20px 0 0 0;
+    background: none;
 }
-.social li {
-    display: inline;
-    margin: 0 2px;
+#comments .user {
+    float: left;
+    width: 70px;
+    height: 70px;
+    margin-right: 20px;
 }
-.social a {
-    background: transparent url(../Resource/images/social-icons.png) no-repeat 0 0;
-    height: 32px;
-    width: 32px;
-    display: inline-block;
+#comments .message {
+    overflow: hidden;
+    padding: 15px 20px 0 20px;
+    background: rgba(0, 0, 0, 0.25);
     position: relative;
-    -webkit-transition: none 200ms ease-in;
-    -o-transition: none 200ms ease-in;
-    -moz-transition: none 200ms ease-in;
 }
-.social a.rss {
-    background-position: 0 0
+#comments ul.children {
+    margin: 0;
+    overflow: inherit;
+    padding: 0 0 0 40px;
+    list-style: none;
 }
-.social a.facebook {
-    background-position: -32px 0
+#comments ol.commentlist ul.children li {
+    padding-right: 0;
+    border: none;
 }
-.social .twitter {
-    background-position: -64px 0
+#comments .info h2 {
+    font-size: 15px;
+    margin: 0;
 }
+#comments .info {
+    margin-bottom: 12px
+}
+#comments .info h2 a {
+    color: #dedede
+}
+#comments .info h2 a:hover {
 
-
-.social .flickr {
-    background-position: -160px 0
 }
-.social .linkedin {
-    background-position: -192px 0
+#comments .info .meta {
+    font-size: 11px;
+    color: #797979;
 }
-.social a.rss:hover {
-    background-position: 0 bottom
+#comments .info a:hover {
+    color: #86aca3
 }
-.social .facebook:hover {
-    background-position: -32px bottom
+#comments .reply-link {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    line-height: 1;
+    font-size: 11px;
+    color: #b9b9b9;
 }
-.social .twitter:hover {
-    background-position: -64px bottom
+#comments .edit-link {
+    margin-bottom: 20px;
+    display: block;
 }
-
-.social .flickr:hover {
-    background-position: -160px bottom
+#comments a:hover {
+    color: #86aca3
 }
-.social .linkedin:hover {
-    background-position: -192px bottom
+a#cancel-comment-reply-link {
+    display: block;
+    text-align: right;
+    margin: -22px 0 0 0;
+    display: block;
+    text-decoration: none;
+    font-size: 20px;
+    font-style: normal;
+    line-height: 1;
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-weight: bold;
 }
-
+.commentlist #respond {
+    margin: 30px 0 0 0
+}
+#commentform p.form-submit {
+    margin: 0
+}
+li.post.pingback p {
+	padding:0;
+	margin:0;
+}
 /*-----------------------------------------------------------------------------------*/
 /*	FORMS
 /*-----------------------------------------------------------------------------------*/
@@ -1042,6 +1138,69 @@ ul.single-gallery li .frame {
 .forms br {
     display: none
 }
+
+
+
+
+/*-----------------------------------------------------------------------------------*/
+/*	SOCIAL
+/*-----------------------------------------------------------------------------------*/
+.social {
+    margin-bottom: 40px;
+    text-align: center;
+}
+#footer .social {
+    margin: 0;
+    text-align: left;
+}
+.social li {
+    display: inline;
+    margin: 0 2px;
+}
+.social a {
+    background: transparent url(../Resource/images/social-icons.png) no-repeat 0 0;
+    height: 32px;
+    width: 32px;
+    display: inline-block;
+    position: relative;
+    -webkit-transition: none 200ms ease-in;
+    -o-transition: none 200ms ease-in;
+    -moz-transition: none 200ms ease-in;
+}
+.social a.rss {
+    background-position: 0 0
+}
+.social a.facebook {
+    background-position: -32px 0
+}
+.social .twitter {
+    background-position: -64px 0
+}
+
+
+.social .flickr {
+    background-position: -160px 0
+}
+.social .linkedin {
+    background-position: -192px 0
+}
+.social a.rss:hover {
+    background-position: 0 bottom
+}
+.social .facebook:hover {
+    background-position: -32px bottom
+}
+.social .twitter:hover {
+    background-position: -64px bottom
+}
+
+.social .flickr:hover {
+    background-position: -160px bottom
+}
+.social .linkedin:hover {
+    background-position: -192px bottom
+}
+
 
 
 /*-----------------------------------------------------------------------------------*/
